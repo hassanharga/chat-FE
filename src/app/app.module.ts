@@ -7,6 +7,8 @@ import { AuthRoutingModule } from './modules/auth-routing.module';
 import { StreamsComponent } from './components/streams/streams.component';
 import { StreamsModule } from './modules/streams.module';
 import { StreamsRoutingModule } from './modules/streams-routing.module';
+import { AuthInterceptor } from './services/auth.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,13 @@ import { StreamsRoutingModule } from './modules/streams-routing.module';
     StreamsModule,
     StreamsRoutingModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
