@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormGroup, FormBuilder, Validator, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-signup',
@@ -10,15 +12,23 @@ import { FormGroup, FormBuilder, Validator, Validators } from '@angular/forms';
 export class SignupComponent implements OnInit {
   signupForm: FormGroup;
   errorMessage: string;
-  constructor(private authSerice: AuthService, private fb: FormBuilder) { }
+  showspinner = false;
+  constructor(private authSerice: AuthService, private fb: FormBuilder, private router: Router, private tokenSer: TokenService) { }
   signupUser() {   // create user
     console.log(this.signupForm.value);
     this.authSerice.createUser(this.signupForm.value).subscribe(
       data => {
+        this.showspinner = true;
         console.log(data);
-        this.signupForm.reset();
+        this.tokenSer.setToken(data.token);
+        // localStorage.setItem('token',data.token);
+        // this.signupForm.reset();
+        setTimeout(() => {
+          this.router.navigate(['streams']);
+        }, 2000);
       },
       err => {
+        this.showspinner = false;
         console.log(err);
         if (err.error.msg) {
           this.errorMessage = err.error.msg[0].message;

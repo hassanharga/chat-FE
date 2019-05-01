@@ -1,10 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { TokenService } from './services/token.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'task';
+export class AppComponent implements OnInit {
+  constructor(private tokenSer: TokenService , private router: Router) {}
+  ngOnInit() {
+    const token = this.tokenSer.getToken();
+    if (token) {
+      this.router.navigate(['streams']);
+    } else {
+      this.router.navigate(['']);
+    }
+  }
 }

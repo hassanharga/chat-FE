@@ -1,21 +1,36 @@
 <div class="container">
   <div class="row">
     <div class="col s10 offset-s1">
-      <form class="col s12">
-        <h1 id="titlel">Login</h1>
+        <div class="progress" *ngIf="showspinner">
+            <div class="indeterminate"></div>
+          </div>
+          <h1 id="title">Login</h1>
+            <div id="errorMsg" *ngIf="errorMessage">
+              <span>
+                <!-- Error Occured -->
+                {{errorMessage}}
+              </span>
+            </div>
+      <form class="col s12" [formGroup]="loginForm" novalidate (ngSubmit)='loginUser()'>
         <div class="row">
           <div class="input-field col s12">
-            <input id="user"  type="text" />
+            <input id="user"  type="text" formControlName="user"/>
             <label for="user">Username</label>
+            <span class="error" *ngIf="!loginForm.controls['user'].valid && loginForm.controls['user'].touched">
+                username is required
+              </span>
           </div>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <input id="pass" type="password" />
+            <input id="pass" type="password" formControlName="pass" />
             <label for="pass">Password</label>
+            <span class="error" *ngIf="!loginForm.controls['pass'].valid && loginForm.controls['pass'].touched">
+                password is required
+              </span>
           </div>
         </div>
-        <button class="btn waves-effect" id="btnl" >
+        <button class="btn waves-effect" id="btnl" [disabled]="loginForm.invalid" >
           Login
         </button>
       </form>

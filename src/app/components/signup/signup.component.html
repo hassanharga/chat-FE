@@ -1,6 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col s10 offset-s1">
+      <div class="progress" *ngIf="showspinner">
+        <div class="indeterminate"></div>
+      </div>
         <h1 id="titles">Signup</h1>
         <div id="errorMsg" *ngIf="errorMessage">
           <span>
@@ -36,7 +39,7 @@
             </span>
           </div>
         </div>
-        <button class="btn waves-effect" id="btns">
+        <button class="btn waves-effect" id="btns" [disabled]="signupForm.invalid">
           Sign Up
         </button>
       </form>
