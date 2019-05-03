@@ -10,6 +10,9 @@ export class PostService {
   url = 'http://localhost:8080/api/chatapp';
   constructor(private http: HttpClient) { }
   addPost(body): Observable<any> {
-    return this.http.post(`${this.url}/posts/add-post`, body);
+    return this.http.post(`${this.url}/post/add-post`, body);
+  }
+  getAllPosts(): Observable<any> {
+    return this.http.get(`${this.url}/posts/`);
   }
 }

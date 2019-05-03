@@ -10,4 +10,5 @@ nav {
 }
 .profile-name, .user-text {
   text-align: center;
+  margin-top: 1px;
 }
