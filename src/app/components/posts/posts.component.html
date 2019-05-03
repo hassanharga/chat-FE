@@ -1,23 +1,23 @@
-<ul class="collection" *ngFor="let post of posts">
+<ul class="collection col s12 m12 l10" *ngFor="let post of posts">
   <li class="collection-item avatar">
-    <img src="images/yuna.jpg" alt="" class="circle">
+    <img src="" alt="" class="circle">
     <span class="title">{{post.username}}</span>
     <p class="time">{{timeFromNow(post.created)}} <br>
-       country
+       <!-- country -->
     </p>
   </li>
   <div class="col s12">
     <div class="card">
-      <div class="card-image">
+      <!-- <div class="card-image">
         <img class="postImage" src="../../../assets/img/1.jpg"/>
-      </div>
+      </div> -->
       <div class="card-content">
         <p>{{post.post}}</p>
       </div>
       <div class="card-action">
-        <i class="material-icons">thumb_up</i>
+        <i (click)='likePost(post)' [ngClass]="(!checkInLikesArray(post.likes, user.username)) ? 'notLiked' : 'liked' " class="material-icons">thumb_up</i>
         <span class="iconSpan">{{post.totalLikes}}</span>
-        <i class="material-icons">chat</i>
+        <i (click)='openCommentBox(post)' class="material-icons">chat</i>
         <span class="iconSpan">{{post.comments.length}}</span>
       </div>
     </div>

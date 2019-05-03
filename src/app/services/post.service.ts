@@ -15,4 +15,7 @@ export class PostService {
   getAllPosts(): Observable<any> {
     return this.http.get(`${this.url}/posts/`);
   }
+  addLike(body): Observable<any> {
+    return this.http.post(`${this.url}/post/add-like`, body);
+  }
 }
