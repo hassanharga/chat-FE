@@ -1,29 +1,31 @@
 <div class="row">
   <div class="col s12 m13 l10">
-    <div class="card postDiv">
-      <div class="card-content">
-        <form [formGroup]="postForm" novalidate (ngSubmit)='submitPost()'>
-          <div class="formDiv">
-            <textarea id="textarea1" class="materialize-textarea" formControlName="post"></textarea>
-            <div class="file-field input-field">
-              <div class="row">
-                <div class="col s6">
+    <div class="card">
+      <div class="card postDiv">
+        <div class="card-content">
+          <form [formGroup]="postForm" novalidate (ngSubmit)='submitPost()'>
+            <div class="formDiv">
+              <textarea id="textarea1" class="materialize-textarea" formControlName="post"></textarea>
+              <div class="file-field input-field">
+                <div class="row">
+                  <div class="col s6">
                     <div class="btn">
-                        <span>
-                          <i class="material-icons">image</i>Image</span>
-                        <input type="file" multiple>
-                      </div>
-                      <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text" placeholder="Upload one or more files" >
-                      </div>
-                </div>
-                <div class="col-s6">
-                  <button class="btn postBtn">Post</button>
+                      <span>
+                        <i class="material-icons">image</i>Image</span>
+                      <input type="file" multiple>
+                    </div>
+                    <div class="file-path-wrapper">
+                      <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                    </div>
+                  </div>
+                  <div class="col-s6">
+                    <button class="btn postBtn">Post</button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   </div>

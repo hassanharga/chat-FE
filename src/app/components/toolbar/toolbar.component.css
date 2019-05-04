@@ -12,3 +12,7 @@ nav {
   text-align: center;
   margin-top: 1px;
 }
+
+.nav-wrapper a {
+  cursor: pointer;
+}

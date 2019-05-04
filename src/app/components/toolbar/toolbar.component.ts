@@ -8,7 +8,7 @@ import { TokenService } from 'src/app/services/token.service';
   styleUrls: ['./toolbar.component.css']
 })
 export class ToolbarComponent implements OnInit {
-  user:any;
+  user: any;
   constructor(private tokenSer: TokenService, private router: Router) { }
 
   ngOnInit() {
@@ -17,6 +17,9 @@ export class ToolbarComponent implements OnInit {
   logout() {
     this.tokenSer.deleteToken();
     this.router.navigate(['']);
+  }
+  goToHome() {
+    this.router.navigate(['streams']);
   }
 
 }

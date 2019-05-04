@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col s12 m4">
     <a>
-      <span>Posts</span>
+      <span>streams</span>
       <p>10</p>
     </a>
   </div>
@@ -20,8 +20,10 @@
 </div>
 <ul class="collection with-header">
 
-  <li class="collection-item">
+  <li class="collection-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]='{exact: true}'>
+    <a [routerLink]="['/streams']">
     <div>Streams<a href="#!" class="secondary-content"><i class="material-icons">announcement</i></a></div>
+    </a>
   </li>
   <li class="collection-item">
     <div>People<a href="#!" class="secondary-content"><i class="material-icons">people</i></a></div>
