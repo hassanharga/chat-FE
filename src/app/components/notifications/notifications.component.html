@@ -1,0 +1,30 @@
+<app-toolbar></app-toolbar>
+
+<div class="container" style="margin-top: 30px;">
+  <div class="row">
+    <div class="col s12 m4 l3">
+      <app-side></app-side>
+    </div>
+    <div class="col s12 m8 l9">
+      <ul class="collection col s12 m10 " *ngFor="let item of notifications" >
+        <li class="collection-item avatar">
+          <img src="http://placehold.it/50x50" alt="" class="circle">
+          <span class="title"> {{item.message}}</span>
+          <a class="secondary-content">
+            <i class="material-icons"*ngIf="!item.read" >brightness_1</i>
+            <i class="material-icons" *ngIf="item.read" >panorama_fish_eye</i>
+          </a>
+          <p class="time">{{timeFromNow(item.created)}}</p>
+          <div>
+              <i class="material-icons" (click)="markNofification(item)" [ngClass]="item.read ? 'disabled' : 'notdisabled'">check</i>
+              <i class="material-icons" (click)="deleteNofification(item)">delete_forever</i>
+          </div>
+        </li>
+      </ul>
+      <div class="row" *ngIf="notifications.length <= 0">
+        <h4 class="txt">You Have No Notifications Yet</h4>
+      </div>
+    </div>
+  </div>
+
+</div>
