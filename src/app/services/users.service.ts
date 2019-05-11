@@ -27,4 +27,8 @@ export class UsersService {
   markNotification(id, deletedValue?): Observable<any> {
     return this.http.post(`${this.url}/mark`, { id, deletedValue });
   }
+  markAllNotification(): Observable<any> {
+    return this.http.post(`${this.url}/mark-all`, { all: true });
+  }
+
 }

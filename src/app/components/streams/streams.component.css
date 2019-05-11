@@ -1,0 +1,10 @@
+.tabs a {
+  color: #64b5f6;
+  background-color: white !important;
+  font-weight: bold;
+  font-size: 18px;
+}
+.tabs .active {
+  background: inherit !important;
+  background-color: white !important;
+}

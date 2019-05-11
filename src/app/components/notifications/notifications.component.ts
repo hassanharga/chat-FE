@@ -22,17 +22,16 @@ export class NotificationsComponent implements OnInit {
   ngOnInit() {
     this.user = this.tokSer.getPayload();
     this.getUser();
-    // this.socket.on('refreshPage', data => {
-    //   this.getUser();
-    // });
+    this.socket.on('refreshPage', data => {
+      this.getUser();
+    });
   }
 
   getUser() {
     this.userSer.getByUserId(this.user._id).subscribe(
       data => {
         this.notifications = data.user.notifications.reverse();
-        // this.socket.emit('refresh', {});
-        // console.log(this.notifications);
+        console.log(this.notifications);
       },
       err => console.log(err)
     );
@@ -43,13 +42,13 @@ export class NotificationsComponent implements OnInit {
   }
   markNofification(data) {
     this.userSer.markNotification(data._id).subscribe(
-      value => { console.log(value); this.getUser(); },
+      value => { console.log(value);  this.socket.emit('refresh', {}); },
       err => console.log(err)
     );
   }
   deleteNofification(data) {
     this.userSer.markNotification(data._id, true).subscribe(
-      value => { console.log(value); this.getUser(); },
+      value => { console.log(value); this.socket.emit('refresh', {}); },
       err => console.log(err)
     );
   }

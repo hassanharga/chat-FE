@@ -21,8 +21,8 @@
                   <p>{{checkInArray(userArr, user._id)}}</p>
                   <button class="btn" *ngIf="!checkInArray(userArr, user._id)" (click)="followUser(user)">Follow</button>
                   <button class="btn disabled following" *ngIf="checkInArray(userArr, user._id)" >Following</button>
-                  <a href="" class="secondary-content">
-                    <i class="material-icons">chat</i>
+                  <a href="" class="secondary-content" [routerLink]="['/chat',user.username]">
+                    <i class="material-icons" >chat</i>
                   </a>
                 </div>
             </div>

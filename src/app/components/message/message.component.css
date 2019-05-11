@@ -1,0 +1,71 @@
+.chat-bubble{
+  border-radius: 10px;
+  display: inline-block;
+  padding: 10px 18px ;
+  position: relative;
+  margin: 10px;
+  max-width: 80%;
+}
+.chat-bubble:before {
+  content: '\00a0';
+  display: block;
+  height: 16px;
+  widows: 9px;
+  position: absolute;
+  bottom: 7.5px;
+}
+.chat-bubble.left{
+  background: #f1f1f0;
+  float: left;
+  margin-left: 7px
+}
+.chat-bubble.left:before{
+  background: #f1f1f0;
+  left: 10px;
+  z-index: -1;
+  border-radius: 10px;
+  -webkit-transform: rotateX(70deg) skew(5deg);
+  transform: rotateX(70deg) skew(5deg);
+}
+.chat-bubble.right{
+  background: #64b5f6;
+  color: #fff;
+  float: right;
+  margin-right: 7px
+}
+.chat-bubble.right:before{
+  background: #64b5f6;
+  right: 10px;
+  z-index: -1;
+  border-radius: 10px;
+  -webkit-transform: rotateX(118deg) skew(-5deg);
+  transform: rotateX(118deg) skew(-5deg);
+}
+.nameCol{
+  margin-left: 20px !important;
+  padding: 0px !important;
+  height: 40px !important;
+}
+.nameCol span {
+  font-size: 20px;
+  color: white;
+  margin-top: -5px !important;
+  padding: 0px !important;
+}
+.card {
+  height: 60px;
+}
+.inputBox {
+  color: white;
+}
+.input-field {
+  top: -9px !important;
+}
+.inputRow {
+  margin: 0px 10px 0px 10px !important;
+}
+.isOnline {
+  color: white;
+  margin-top: -5px !important;
+  padding: 0px !important;
+}

@@ -7,22 +7,21 @@ import { TokenService } from 'src/app/services/token.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-posts',
-  templateUrl: './posts.component.html',
-  styleUrls: ['./posts.component.css']
+  selector: 'app-top-streams',
+  templateUrl: './top-streams.component.html',
+  styleUrls: ['./top-streams.component.css']
 })
-export class PostsComponent implements OnInit {
+export class TopStreamsComponent implements OnInit {
   socket: any;
   user: any;
-  posts = [];
+  topPosts = [];
   constructor(private postSer: PostService, private tokser: TokenService, private router: Router) {
-    this.socket = io('http://localhost:8080');
+    this.socket = io('http://localhost:8080'); }
 
-  }
 
   ngOnInit() {
-    this.getPosts();
     this.user = this.tokser.getPayload();
+    this.getPosts();
     this.socket.on('refreshPage', data => {
       this.getPosts();
     });
@@ -31,7 +30,7 @@ export class PostsComponent implements OnInit {
 
   getPosts() {
     this.postSer.getAllPosts().subscribe(
-      data => {console.log(data); this.posts = data.posts; } ,
+      data => {console.log(data); this.topPosts = data.topPosts; } ,
       err => {
         console.log(err);
       }
@@ -54,3 +53,4 @@ export class PostsComponent implements OnInit {
   }
 
 }
+
