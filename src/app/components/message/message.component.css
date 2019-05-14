@@ -1,3 +1,7 @@
+.rowDiv {
+  height: 300px;
+  overflow-y: scroll;
+}
 .chat-bubble{
   border-radius: 10px;
   display: inline-block;
@@ -52,11 +56,30 @@
   margin-top: -5px !important;
   padding: 0px !important;
 }
+.emojiDiv {
+  width: 40px !important;
+  margin-bottom: 0px !important;
+}
+.emojiBtn {
+  font-size: 20px !important;
+  background: inherit !important;
+  border: none !important;
+  text-align: center !important;
+  margin-left: -10px !important;
+}
+.emoji-content {
+  width: 100% !important;
+}
+.emoji-picker {
+  width: 100% !important;
+  right: 6px;
+}
 .card {
   height: 60px;
 }
 .inputBox {
   color: white;
+  background: #64b5f6;
 }
 .input-field {
   top: -9px !important;

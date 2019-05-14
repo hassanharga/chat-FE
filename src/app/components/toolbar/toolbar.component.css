@@ -1,6 +1,9 @@
 nav {
   background-color: #2196F3;
 }
+.nav-div {
+  text-align: center;
+}
 .responsive-img {
   display: block;
   margin-left: auto;
@@ -46,11 +49,13 @@ nav {
 }
 .markAll {
   color: #fff;
+  margin-bottom: 2px;
+  margin-right: 20px;
   background-color: #64b5f6 !important;
 }
 .nav-label-icon{
   background-color: red !important;
 }
-/* .dropdown-content{
-  width: 150px;
-} */
+.dropdown-content{
+  width: 300px !important;
+}

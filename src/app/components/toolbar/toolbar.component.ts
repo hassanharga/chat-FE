@@ -27,7 +27,7 @@ export class ToolbarComponent implements OnInit {
     const dropdown = document.querySelector('.dropdown-trigger');
     M.Dropdown.init(dropdown, {
       alignment: 'right',
-      hover: true,
+      // hover: true,
       coverTrigger: false
     });
     this.socket.on('refreshPage', data => {
