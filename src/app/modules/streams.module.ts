@@ -19,6 +19,7 @@ import { NotificationsComponent } from '../components/notifications/notification
 import { TopStreamsComponent } from '../components/top-streams/top-streams.component';
 import { ChatComponent } from '../components/chat/chat.component';
 import { MessageComponent } from '../components/message/message.component';
+import { MessageService } from '../services/message.service';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,6 @@ import { MessageComponent } from '../components/message/message.component';
     RouterModule
   ],
   exports: [StreamsComponent, ToolbarComponent, PostFormsComponent, PostsComponent, CommentsComponent],
-  providers: [TokenService, PostService, UsersService]
+  providers: [TokenService, PostService, UsersService, MessageService]
 })
 export class StreamsModule { }

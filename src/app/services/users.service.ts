@@ -15,7 +15,7 @@ export class UsersService {
   getByUserId(id): Observable<any> {
     return this.http.get(`${this.url}/user/${id}`);
   }
-  getgetByUsername(username): Observable<any> {
+  getByUsername(username): Observable<any> {
     return this.http.get(`${this.url}/username/${username}`);
   }
   followUser(id): Observable<any> {

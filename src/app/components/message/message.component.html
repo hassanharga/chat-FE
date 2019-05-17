@@ -42,9 +42,9 @@
     <div class="row">
       <div class="card">
         <div class="inputRow">
-          <form>
+          <form (ngSubmit)='sendMessage()'>
             <div class="input-field inputField col s10">
-              <textarea name="message" class="materilaize-textarea inputBox"></textarea>
+              <textarea name="message" [(ngModel)]="message" class="materilaize-textarea inputBox"></textarea>
             </div>
             <div class="input-field col s1 emojiDiv">
               <button class="emojiBtn">Emoji</button>
