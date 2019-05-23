@@ -17,4 +17,8 @@ export class MessageService {
       message
     });
   }
+
+  getAllMessages(senderId, receiverId) {
+    return this.http.get(`${this.url}/chat-message/${senderId}/${receiverId}`);
+  }
 }

@@ -15,6 +15,7 @@ export class MessageComponent implements OnInit {
   receiverData: any;
   user: any;
   message: any;
+  messages = [];
   constructor(
     private tokSer: TokenService,
     private msgSer: MessageService,
@@ -34,8 +35,15 @@ export class MessageComponent implements OnInit {
   getUserByUsername(name) {
     this.userSer.getByUsername(name).subscribe(data => {
       this.receiverData = data.user;
+      this.getMessages(this.user._id, data.user._id);
       // console.log(data);
     });
+  }
+  getMessages(senderId,receiverId) {
+    this.msgSer.getAllMessages(senderId, receiverId).subscribe(data => {
+      console.log(data.messages.message); this.messages = data.messages.message; },
+      err => console.log(err)
+    );
   }
 
   sendMessage() {

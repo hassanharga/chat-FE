@@ -92,3 +92,9 @@
   margin-top: -5px !important;
   padding: 0px !important;
 }
+.messange-wrspper {
+  display: inline-block;
+}
+/* .message {
+  display: block;
+} */
