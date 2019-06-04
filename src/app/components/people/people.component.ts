@@ -35,7 +35,7 @@ export class PeopleComponent implements OnInit {
     this.userSer.getAllUsers().subscribe(
       data => {
         _.remove(data.users, {username: this.loggedinUser.username });
-        console.log(data);
+        // console.log(data);
         this.users = data.users;
       }
     );
@@ -44,7 +44,7 @@ export class PeopleComponent implements OnInit {
   getUserById() {
     this.userSer.getByUserId(this.loggedinUser._id).subscribe(
       data => {
-        console.log(data);
+        // console.log(data);
         this.userArr = data.user.following;
       }
     );

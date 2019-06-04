@@ -21,7 +21,7 @@ export class SideComponent implements OnInit {
     this.userSer.getByUserId(this.user._id).subscribe(
       data => {
         this.userData = data.user;
-        console.log(this.userData.posts.length);
+        // console.log(this.userData.posts.length);
       },
       err => console.log(err)
     );

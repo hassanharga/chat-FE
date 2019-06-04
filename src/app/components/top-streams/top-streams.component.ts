@@ -30,7 +30,7 @@ export class TopStreamsComponent implements OnInit {
 
   getPosts() {
     this.postSer.getAllPosts().subscribe(
-      data => {console.log(data); this.topPosts = data.topPosts; } ,
+      data => {this.topPosts = data.topPosts; } ,
       err => {
         console.log(err);
       }

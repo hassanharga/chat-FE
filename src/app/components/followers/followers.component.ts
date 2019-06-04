@@ -32,7 +32,7 @@ export class FollowersComponent implements OnInit {
     this.userSer.getByUserId(this.user._id).subscribe(
       data => {
         this.followers = data.user.followers;
-        console.log(this.followers);
+        // console.log(this.followers);
       },
       err => console.log(err)
     );

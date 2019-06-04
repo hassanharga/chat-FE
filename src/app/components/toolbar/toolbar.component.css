@@ -4,6 +4,16 @@ nav {
 .nav-div {
   text-align: center;
 }
+li {
+  margin: 0 10px;
+  position: relative;
+}
+/* ul#dropdown-content.col.s12.collection {
+  top: 50px !important;
+} */
+/* #dropdown {
+  top: 60px;
+} */
 .responsive-img {
   display: block;
   margin-left: auto;
@@ -44,6 +54,10 @@ nav {
 .nav-wrapper a {
   cursor: pointer;
 }
+.badge {
+  cursor: pointer;
+
+}
 .secondary-content{
   margin-top: -5px !important;
 }
@@ -58,4 +72,9 @@ nav {
 }
 .dropdown-content{
   width: 300px !important;
+  top: 50px !important;
+
+}
+.msg {
+  margin-left: 15px !important;
 }
