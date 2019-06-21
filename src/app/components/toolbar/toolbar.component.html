@@ -21,9 +21,9 @@
         </li>
         <li class='dropdown-button dropdown-trigger1' data-target='dropdown1'>
           <i class="fa fa-bell badge"></i>
-          <!-- <span class="nav-label-icon" *ngIf="count.length >0">{{count.length}}</span> -->
+          <span class="nav-label-icon" *ngIf="msgNumber >0">{{msgNumber}}</span>
           <ul id='dropdown1' class='dropdown-content col s12 collection'>
-            <li class="collection-item avatar" *ngFor="let chat of chatList">
+            <li class="collection-item avatar" *ngFor="let chat of chatList" [routerLink]="['/chat', chat.receiverId.username]" >
               <img src="http://placehold.it/50x50" class="circle">
               <span class="title">
                 {{chat.receiverId.username}}
@@ -33,10 +33,10 @@
               </span>
               <p class="msg">
                 {{chat.msgId.message[chat.msgId.message.length-1].body}}
-                <a href="" class="secondary-content">
+                <a href="" class="secondary-content" *ngIf="!chat.msgId.message[chat.msgId.message.length-1].isRead">
                   <i class="material-icons">brightness_1</i>
                 </a>
-                <a href="" class="secondary-content">
+                <a href="" class="secondary-content" *ngIf="chat.msgId.message[chat.msgId.message.length-1].isRead">
                   <i class="material-icons">panorama_fish_eye</i>
                 </a>
 

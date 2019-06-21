@@ -18,6 +18,7 @@ export class ToolbarComponent implements OnInit {
   notifications = [];
   count = [];
   chatList = [];
+  msgNumber = 0;
 
   constructor(private tokenSer: TokenService, private router: Router, private userSer: UsersService) {
     this.socket = io('http://localhost:8080');
@@ -51,10 +52,23 @@ export class ToolbarComponent implements OnInit {
         const value = _.filter(this.notifications, ['read', false]);
         this.count = value;
         this.chatList = data.user.chatList.reverse();
+        this.checkIfRead(this.chatList);
         console.log(this.chatList);
       },
       err => console.log(err)
     );
+  }
+  checkIfRead(arr) {
+    const checkArr = [];
+    for (let i = 0; i < arr.length; i++ ) {
+      const receiver = arr[i].msgId.message[arr[i].msgId.message.length - 1];
+      if (this.router.url !== `/chat/${receiver.senderName}`) {
+        if (receiver.isRead === false && receiver.receiverName === this.user.username) {
+          checkArr.push(1);
+          this.msgNumber = _.sum(checkArr);
+        }
+      }
+    }
   }
   timeFromNow(time) {
     return moment(time).fromNow();
