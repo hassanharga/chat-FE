@@ -6,6 +6,7 @@ import { UsersService } from 'src/app/services/users.service';
 import * as moment from 'moment';
 import io from 'socket.io-client';
 import _ from 'lodash';
+import { MessageService } from 'src/app/services/message.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -20,7 +21,7 @@ export class ToolbarComponent implements OnInit {
   chatList = [];
   msgNumber = 0;
 
-  constructor(private tokenSer: TokenService, private router: Router, private userSer: UsersService) {
+  constructor(private tokenSer: TokenService, private router: Router, private userSer: UsersService, private msgSer: MessageService) {
     this.socket = io('http://localhost:8080');
   }
 
@@ -53,7 +54,7 @@ export class ToolbarComponent implements OnInit {
         this.count = value;
         this.chatList = data.user.chatList.reverse();
         this.checkIfRead(this.chatList);
-        console.log(this.chatList);
+        // console.log(this.chatList);
       },
       err => console.log(err)
     );
@@ -92,6 +93,20 @@ export class ToolbarComponent implements OnInit {
   }
   goToHome() {
     this.router.navigate(['streams']);
+  }
+
+  goToChatPage(name) {
+    this.router.navigate(['chat', name]);
+    this.msgSer.markReceiverMessages(this.user.username, name).subscribe(
+      data => {console.log(data); this.socket.emit('refresh', {}); this.msgNumber = 0; },
+      err => console.log(err)
+    );
+  }
+  markAllMessages() {
+    this.msgSer.markAllMessages().subscribe(
+      data => {console.log(data); this.socket.emit('refresh', {}); },
+      err => console.log(err)
+    );
   }
 
 }

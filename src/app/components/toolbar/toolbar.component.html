@@ -23,7 +23,7 @@
           <i class="fa fa-bell badge"></i>
           <span class="nav-label-icon" *ngIf="msgNumber >0">{{msgNumber}}</span>
           <ul id='dropdown1' class='dropdown-content col s12 collection'>
-            <li class="collection-item avatar" *ngFor="let chat of chatList" [routerLink]="['/chat', chat.receiverId.username]" >
+            <li class="collection-item avatar" *ngFor="let chat of chatList" (click)="goToChatPage(chat.receiverId.username)" >
               <img src="http://placehold.it/50x50" class="circle">
               <span class="title">
                 {{chat.receiverId.username}}
@@ -33,7 +33,7 @@
               </span>
               <p class="msg">
                 {{chat.msgId.message[chat.msgId.message.length-1].body}}
-                <a href="" class="secondary-content" *ngIf="!chat.msgId.message[chat.msgId.message.length-1].isRead">
+                <a href="" class="secondary-content" *ngIf="!chat.msgId.message[chat.msgId.message.length-1].isRead && chat.receiverId.username !== chat.msgId.message[chat.msgId.message.length-1].receiverName">
                   <i class="material-icons">brightness_1</i>
                 </a>
                 <a href="" class="secondary-content" *ngIf="chat.msgId.message[chat.msgId.message.length-1].isRead">
@@ -47,7 +47,7 @@
               <p class="txt">No Notifications</p>
             </li>
             <p class="secondary-content">
-              <a class="markAll" (click)="markAll()">Mark all as read</a></p>
+              <a class="markAll" (click)="markAllMessages()">Mark all as read</a></p>
           </ul>
         </li>
         <li><a (click)='logout()'>Logout</a></li>

@@ -4,7 +4,7 @@ import { MessageService } from 'src/app/services/message.service';
 import { ActivatedRoute } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
 import io from 'socket.io-client';
-
+import { CaretEvent, EmojiEvent, EmojiPickerOptions } from 'ng2-emoji-picker';
 
 @Component({
   selector: 'app-message',
@@ -20,6 +20,15 @@ export class MessageComponent implements OnInit, AfterViewInit {
   socket: any;
   typing = false;
   typingMessage;
+
+  public eventMock;
+  public eventPosMock;
+
+  public direction = Math.random() > 0.5 ? (Math.random() > 0.5 ? 'top' : 'bottom') : (Math.random() > 0.5 ? 'right' : 'left');
+  public toggled = false;
+  public content = ' ';
+
+  private _lastCaretEvent: CaretEvent;
 
   constructor(
     private tokSer: TokenService,
@@ -94,6 +103,24 @@ export class MessageComponent implements OnInit, AfterViewInit {
       }
     );
     }
+  }
+
+HandleSelection(event: EmojiEvent) {
+// tslint:disable-next-line: max-line-length
+    this.content = this.content.slice(0, this._lastCaretEvent.caretOffset) + event.char + this.content.slice(this._lastCaretEvent.caretOffset);
+    this.eventMock = JSON.stringify(event);
+    this.message = this.content;
+    this.toggled = !this.toggled;
+    this.content = '';
+  }
+
+HandleCurrentCaret(event: CaretEvent) {
+    this._lastCaretEvent = event;
+    this.eventPosMock = `{ caretOffset : ${event.caretOffset}, caretRange: Range{...}, textContent: ${event.textContent} }`;
+  }
+
+Toggled() {
+  this.toggled = !this.toggled;
   }
 
   isTyping() {
