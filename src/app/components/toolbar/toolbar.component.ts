@@ -107,13 +107,13 @@ export class ToolbarComponent implements OnInit, AfterViewInit {
   goToChatPage(name) {
     this.router.navigate(['chat', name]);
     this.msgSer.markReceiverMessages(this.user.username, name).subscribe(
-      data => {console.log(data); this.socket.emit('refresh', {}); this.msgNumber = 0; },
+      data => {console.log(data); this.socket.emit('refresh', {});  },
       err => console.log(err)
     );
   }
   markAllMessages() {
     this.msgSer.markAllMessages().subscribe(
-      data => {console.log(data); this.socket.emit('refresh', {}); },
+      data => {console.log(data); this.socket.emit('refresh', {}); this.msgNumber = 0; },
       err => console.log(err)
     );
   }
