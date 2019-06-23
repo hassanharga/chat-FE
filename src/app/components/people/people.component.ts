@@ -15,6 +15,9 @@ export class PeopleComponent implements OnInit {
   users = [];
   userArr = [];
   loggedinUser: any;
+  online_users = [];
+  // isOnline = false;
+
   constructor(private userSer: UsersService, private tokSer: TokenService) {
     this.socket = io('http://localhost:8080');
   }
@@ -29,6 +32,21 @@ export class PeopleComponent implements OnInit {
     });
 
     // this.getUserByUsername();
+  }
+
+  online(e) {
+    this.online_users = e;
+    console.log(this.online_users);
+  }
+
+  checkIfOnline(name) {
+      const result = _.indexOf(this.online_users, name);
+      // console.log(result);
+      if (result > -1) {
+        return true;
+      } else {
+        return false;
+      }
   }
 
   getUsers() {

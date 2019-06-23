@@ -1,17 +1,20 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { TokenService } from 'src/app/services/token.service';
 import { MessageService } from 'src/app/services/message.service';
 import { ActivatedRoute } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
 import io from 'socket.io-client';
 import { CaretEvent, EmojiEvent, EmojiPickerOptions } from 'ng2-emoji-picker';
+import _ from 'lodash';
 
 @Component({
   selector: 'app-message',
   templateUrl: './message.component.html',
   styleUrls: ['./message.component.css']
 })
-export class MessageComponent implements OnInit, AfterViewInit {
+export class MessageComponent implements OnInit, AfterViewInit, OnChanges {
+  @Input() usersOnline;
+  users_online = [];
   receiver: string;
   receiverData: any;
   user: any;
@@ -20,6 +23,7 @@ export class MessageComponent implements OnInit, AfterViewInit {
   socket: any;
   typing = false;
   typingMessage;
+  isOnline = false;
 
   public eventMock;
   public eventPosMock;
@@ -49,27 +53,35 @@ export class MessageComponent implements OnInit, AfterViewInit {
       this.socket.on('refreshPage', data => {
         this.getUserByUsername(this.receiver);
       });
-      // console.log(params);
     });
 
-    // this.getUserByUsername(this.receiver);
-
-    // this.socket.on('refreshPage', data => {
-    //   this.getUserByUsername(this.receiver);
-    // });
-
+    // this.users_online = this.usersOnline;
+    // console.log(this.users_online);
     this.socket.on('is_typing', data => {
       if (data.sender === this.receiver) {
-        // console.log(data);
         this.typing = true;
       }
     });
     this.socket.on('has_stopped_typing', data => {
       if (data.sender === this.receiver) {
-        // console.log(data);
         this.typing = false;
       }
     });
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    const title = document.querySelector('.nameCol');
+    if (changes.usersOnline.currentValue.length > 0) {
+      const result = _.indexOf(changes.usersOnline.currentValue, this.receiver);
+      console.log(changes.usersOnline.currentValue);
+      if (result > -1) {
+        this.isOnline = true;
+        (title as HTMLElement).style.marginTop = '10px';
+      } else {
+        this.isOnline = false;
+        (title as HTMLElement).style.marginTop = '20px';
+      }
+    }
   }
 
   ngAfterViewInit() {
