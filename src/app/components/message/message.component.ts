@@ -44,14 +44,19 @@ export class MessageComponent implements OnInit, AfterViewInit {
     this.user = this.tokSer.getPayload();
     this.route.params.subscribe(params => {
       this.receiver = params.user;
+      this.getUserByUsername(this.receiver);
+
+      this.socket.on('refreshPage', data => {
+        this.getUserByUsername(this.receiver);
+      });
       // console.log(params);
     });
 
-    this.getUserByUsername(this.receiver);
+    // this.getUserByUsername(this.receiver);
 
-    this.socket.on('refreshPage', data => {
-      this.getUserByUsername(this.receiver);
-    });
+    // this.socket.on('refreshPage', data => {
+    //   this.getUserByUsername(this.receiver);
+    // });
 
     this.socket.on('is_typing', data => {
       if (data.sender === this.receiver) {

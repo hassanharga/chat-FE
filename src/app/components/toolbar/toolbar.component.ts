@@ -52,7 +52,7 @@ export class ToolbarComponent implements OnInit {
         this.notifications = data.user.notifications.reverse();
         const value = _.filter(this.notifications, ['read', false]);
         this.count = value;
-        this.chatList = data.user.chatList.reverse();
+        this.chatList = data.user.chatList;
         this.checkIfRead(this.chatList);
         // console.log(this.chatList);
       },
