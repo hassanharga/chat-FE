@@ -20,8 +20,10 @@ import { TopStreamsComponent } from '../components/top-streams/top-streams.compo
 import { ChatComponent } from '../components/chat/chat.component';
 import { MessageComponent } from '../components/message/message.component';
 import { MessageService } from '../services/message.service';
-import {NgxAutoScrollModule} from 'ngx-auto-scroll';
+import { NgxAutoScrollModule} from 'ngx-auto-scroll';
 import { EmojiPickerModule } from 'ng2-emoji-picker';
+import { ImagesComponent } from '../components/images/images.component';
+import { FileUploadModule } from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import { EmojiPickerModule } from 'ng2-emoji-picker';
     NotificationsComponent,
     TopStreamsComponent,
     ChatComponent,
-    MessageComponent
+    MessageComponent,
+    ImagesComponent
   ],
   imports: [
     CommonModule,
@@ -46,7 +49,8 @@ import { EmojiPickerModule } from 'ng2-emoji-picker';
     HttpClientModule,
     RouterModule,
     NgxAutoScrollModule,
-    EmojiPickerModule.forRoot()
+    EmojiPickerModule.forRoot(),
+    FileUploadModule
   ],
   exports: [StreamsComponent, ToolbarComponent, PostFormsComponent, PostsComponent, CommentsComponent],
   providers: [TokenService, PostService, UsersService, MessageService]

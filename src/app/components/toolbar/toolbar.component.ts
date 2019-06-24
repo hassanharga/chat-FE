@@ -21,6 +21,8 @@ export class ToolbarComponent implements OnInit, AfterViewInit {
   count = [];
   chatList = [];
   msgNumber = 0;
+  imageId: any;
+  imageVersion: any;
 
   constructor(private tokenSer: TokenService, private router: Router, private userSer: UsersService, private msgSer: MessageService) {
     this.socket = io('http://localhost:8080');
@@ -43,8 +45,9 @@ export class ToolbarComponent implements OnInit, AfterViewInit {
       coverTrigger: false
     });
     this.socket.emit('online', {room: 'global', name: this.user.username});
-    this.socket.on('refreshPage', data => {
-      console.log(data);
+    this.socket.on('refreshPage', () => {
+      this.getUser();
+      // console.log(data);
     });
   }
 
@@ -59,11 +62,13 @@ export class ToolbarComponent implements OnInit, AfterViewInit {
     this.userSer.getByUserId(this.user._id).subscribe(
       data => {
         this.notifications = data.user.notifications.reverse();
+        this.imageVersion = data.user.picVersion;
+        this.imageId = data.user.picId;
         const value = _.filter(this.notifications, ['read', false]);
         this.count = value;
         this.chatList = data.user.chatList;
         this.checkIfRead(this.chatList);
-        // console.log(this.chatList);
+        // console.log(data);
       },
       err => console.log(err)
     );

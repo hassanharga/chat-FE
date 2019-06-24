@@ -30,5 +30,11 @@ export class UsersService {
   markAllNotification(): Observable<any> {
     return this.http.post(`${this.url}/mark-all`, { all: true });
   }
+  upoadImage(image): Observable<any> {
+    return this.http.post(`${this.url}/upload-image`, {image});
+  }
+  setdefaultImage(imgversion, imgId): Observable<any> {
+    return this.http.get(`${this.url}/set-default/${imgversion}/${imgId}`);
+  }
 
 }
