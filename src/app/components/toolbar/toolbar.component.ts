@@ -68,7 +68,7 @@ export class ToolbarComponent implements OnInit, AfterViewInit {
         this.count = value;
         this.chatList = data.user.chatList;
         this.checkIfRead(this.chatList);
-        // console.log(data);
+        // console.log(this.chatList);
       },
       err => console.log(err)
     );

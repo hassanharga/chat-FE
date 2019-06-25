@@ -3,6 +3,7 @@ import { UsersService } from 'src/app/services/users.service';
 import _ from 'lodash';
 import io from 'socket.io-client';
 import { TokenService } from 'src/app/services/token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-people',
@@ -18,7 +19,7 @@ export class PeopleComponent implements OnInit {
   online_users = [];
   // isOnline = false;
 
-  constructor(private userSer: UsersService, private tokSer: TokenService) {
+  constructor(private userSer: UsersService, private tokSer: TokenService, private router: Router) {
     this.socket = io('http://localhost:8080');
   }
 
@@ -93,6 +94,10 @@ export class PeopleComponent implements OnInit {
     } else {
       return false;
     }
+  }
+
+  viewUser(user) {
+    this.router.navigate(['users', user.username]);
   }
 
 }

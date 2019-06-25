@@ -8,7 +8,7 @@
     <div class="col s12 m8 l9">
       <ul class="collection col s12 m10 " *ngFor="let item of notifications" >
         <li class="collection-item avatar">
-          <img src="http://placehold.it/50x50" alt="" class="circle">
+          <img src="http://res.cloudinary.com/hassanharga/image/upload/v{{item.senderId.picVersion}}/{{item.senderId.picId}}" alt="" class="circle">
           <span class="title"> {{item.message}}</span>
           <a class="secondary-content">
             <i class="material-icons"*ngIf="!item.read" >brightness_1</i>

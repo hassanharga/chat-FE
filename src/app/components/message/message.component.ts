@@ -96,7 +96,7 @@ export class MessageComponent implements OnInit, AfterViewInit, OnChanges {
     this.userSer.getByUsername(name).subscribe(data => {
       this.receiverData = data.user;
       this.getMessages(this.user._id, data.user._id);
-      // console.log(data);
+      console.log(this.receiverData);
     });
   }
   getMessages(senderId, receiverId) {
