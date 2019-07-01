@@ -13,11 +13,11 @@
   height: 515px !important;
 }
 
-button {
+/* button {
   background: none !important;
   border: none !important;
   height: 10px;
-}
+} */
 .liked {
   color: #64b5f6;
 }

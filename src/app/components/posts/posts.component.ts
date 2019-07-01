@@ -31,7 +31,7 @@ export class PostsComponent implements OnInit {
 
   getPosts() {
     this.postSer.getAllPosts().subscribe(
-      data => { console.log(data.posts); this.posts = data.posts; } ,
+      data => {  this.posts = data.posts; } ,
       err => {
         console.log(err);
       }

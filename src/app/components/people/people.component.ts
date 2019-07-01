@@ -4,6 +4,7 @@ import _ from 'lodash';
 import io from 'socket.io-client';
 import { TokenService } from 'src/app/services/token.service';
 import { Router } from '@angular/router';
+import { ClassField } from '@angular/compiler';
 
 @Component({
   selector: 'app-people',
@@ -37,7 +38,7 @@ export class PeopleComponent implements OnInit {
 
   online(e) {
     this.online_users = e;
-    console.log(this.online_users);
+    // console.log(this.online_users);
   }
 
   checkIfOnline(name) {
@@ -80,7 +81,7 @@ export class PeopleComponent implements OnInit {
   followUser(user) {
     this.userSer.followUser(user._id).subscribe(
       data => {
-        console.log(data);
+        // console.log(data);
         this.socket.emit('refresh', {});
       }
     );
@@ -98,6 +99,13 @@ export class PeopleComponent implements OnInit {
 
   viewUser(user) {
     this.router.navigate(['users', user.username]);
+    if (this.loggedinUser.username !== user.username) {
+      // console.log(user.username);
+      this.userSer.profileNotifications(user._id).subscribe(
+        data => {console.log(data); this.socket.emit('refresh', {}); },
+        err => console.log(err)
+      );
+    }
   }
 
 }

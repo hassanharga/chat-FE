@@ -8,9 +8,9 @@
     </div>
     <div class="col s12 m8 l9">
         <div class="row">
-          <div class="col s12 m6 l4 cardDiv" *ngFor="let user of users" (click)="viewUser(user)">
+          <div class="col s12 m6 l4 cardDiv" *ngFor="let user of users" >
             <div class="card">
-              <a>
+              <a (click)="viewUser(user)">
                 <div class="card-image imgDiv">
                   <img src="http://res.cloudinary.com/hassanharga/image/upload/v{{user.picVersion}}/{{user.picId}}" class="imgCircle responsive-img">
                 </div>

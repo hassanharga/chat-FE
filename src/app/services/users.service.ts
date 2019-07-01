@@ -36,5 +36,8 @@ export class UsersService {
   setdefaultImage(imgversion, imgId): Observable<any> {
     return this.http.get(`${this.url}/set-default/${imgversion}/${imgId}`);
   }
+  profileNotifications(id): Observable<any> {
+    return this.http.post(`${this.url}/user/view-profile`, {id});
+  }
 
 }

@@ -60,7 +60,7 @@ export class ViewUserComponent implements OnInit, AfterViewInit {
         this.followers = data.user.followers;
         this.picVersion = data.user.picVersion;
         this.picId = data.user.picId;
-        console.log(data);
+        // console.log(data);
         // console.log(this.posts);
         // console.log(this.following);
         // console.log(this.followers);
@@ -85,7 +85,13 @@ export class ViewUserComponent implements OnInit, AfterViewInit {
   openCommentBox(post) {
     this.router.navigate(['post', post._id]);
   }
-
+  unfollowUser(user) {
+    this.userSer.unfollowUser(user._id).subscribe(
+      data => {console.log(data);
+      this.socket.emit('refresh', {}); },
+      err => console.log(err)
+    );
+  }
   changeTabs(tab) {
     if (tab === 'posts') {
       this.postTab = true;
