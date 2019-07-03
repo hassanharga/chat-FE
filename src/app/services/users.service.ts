@@ -39,5 +39,8 @@ export class UsersService {
   profileNotifications(id): Observable<any> {
     return this.http.post(`${this.url}/user/view-profile`, {id});
   }
+  changePassword(body): Observable<any> {
+    return this.http.post(`${this.url}/user/change-password`, body);
+  }
 
 }
