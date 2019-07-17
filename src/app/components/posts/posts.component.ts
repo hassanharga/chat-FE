@@ -15,6 +15,7 @@ export class PostsComponent implements OnInit {
   socket: any;
   user: any;
   posts = [];
+
   constructor(private postSer: PostService, private tokser: TokenService, private router: Router) {
     this.socket = io('http://localhost:8080');
 
@@ -31,7 +32,7 @@ export class PostsComponent implements OnInit {
 
   getPosts() {
     this.postSer.getAllPosts().subscribe(
-      data => {  this.posts = data.posts; } ,
+      data => { this.posts = data.posts; } ,
       err => {
         console.log(err);
       }

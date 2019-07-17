@@ -18,3 +18,8 @@
 .auth-content {
   height: 515px !important;
 }
+
+.card-panel {
+  height: stretch !important;
+  height: -webkit-fill-available !important;
+}

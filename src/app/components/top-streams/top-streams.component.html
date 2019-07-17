@@ -8,9 +8,9 @@
     </li>
     <div class="col s12">
       <div class="card">
-        <!-- <div class="card-image">
-          <img class="postImage" src="../../../assets/img/1.jpg"/>
-        </div> -->
+        <div class="card-image" *ngIf="post.imgVersion && post.imgId">
+          <img class="postImage" src="http://res.cloudinary.com/hassanharga/image/upload/v{{post.imgVersion}}/{{post.imgId}}"/>
+        </div>
         <div class="card-content">
           <p>{{post.post}}</p>
         </div>

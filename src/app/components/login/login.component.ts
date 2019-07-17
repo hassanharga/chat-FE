@@ -15,11 +15,11 @@ export class LoginComponent implements OnInit {
   showspinner = false;
   constructor(private fb: FormBuilder, private authSer: AuthService, private router: Router, private tokenSer: TokenService) { }
   loginUser() {
-    console.log(this.loginForm.value);
+    // console.log(this.loginForm.value);
     this.authSer.loginUser(this.loginForm.value).subscribe(
       data => {
         this.showspinner = true;
-        console.log(data);
+        // console.log(data);
         this.tokenSer.setToken(data.token);
         // localStorage.setItem('token',data.token);
         // this.loginForm.reset();

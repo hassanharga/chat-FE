@@ -102,7 +102,7 @@ export class PeopleComponent implements OnInit {
     if (this.loggedinUser.username !== user.username) {
       // console.log(user.username);
       this.userSer.profileNotifications(user._id).subscribe(
-        data => {console.log(data); this.socket.emit('refresh', {}); },
+        data => { this.socket.emit('refresh', {}); },
         err => console.log(err)
       );
     }
