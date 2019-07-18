@@ -20,7 +20,7 @@
       <div class="row">
         <div class="col s12">
           <h5 class="">{{name}}</h5>
-          <h6>country</h6>
+          <p *ngIf="user.country && user.city">{{user.country}}, {{user.city}}</p>
         </div>
       </div>
     </div>

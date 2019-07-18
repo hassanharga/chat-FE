@@ -18,6 +18,7 @@
                   <h3 class="card-title">
                     {{user.userFollowed.username}}
                   </h3>
+                  <p *ngIf="user.userFollowed.country && user.userFollowed.city">{{user.userFollowed.country}}, {{user.userFollowed.city}}</p>
                   <button class="btn"  (click)="unfollowUser(user.userFollowed)">Unfollow</button>
                   <!-- <p>{{checkInArray(user.userFollowed.followers, user.userFollowed._id)}}</p>
                   <button class="btn" *ngIf="!checkInArray(user.userFollowed.followers, user.userFollowed._id)" (click)="followUser(user.follower)">Follow</button>

@@ -18,6 +18,7 @@
                   <h3 class="card-title">
                       {{user.follower.username}}
                   </h3>
+                  <p *ngIf="user.follower.country && user.follower.city">{{user.follower.country}}, {{user.follower.city}}</p>
                   </div>
             </div>
           </div>
