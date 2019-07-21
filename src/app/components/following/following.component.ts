@@ -3,6 +3,7 @@ import { TokenService } from 'src/app/services/token.service';
 import { UsersService } from 'src/app/services/users.service';
 import io from 'socket.io-client';
 import _ from 'lodash';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class FollowingComponent implements OnInit {
   user: any;
   socket: any;
 
-  constructor(private tokSer: TokenService, private userSer: UsersService) {
+  constructor(private tokSer: TokenService, private userSer: UsersService, private router: Router) {
     this.socket = io('http://localhost:8080');
    }
 
@@ -52,6 +53,16 @@ export class FollowingComponent implements OnInit {
       this.socket.emit('refresh', {}); },
       err => console.log(err)
     );
+  }
+  viewUser(user) {
+    this.router.navigate(['users', user.userFollowed.username]);
+    if (this.user.username !== user.userFollowed.username) {
+      // console.log(user.userFollowed.username);
+      this.userSer.profileNotifications(user.userFollowed._id).subscribe(
+        data => { this.socket.emit('refresh', {}); },
+        err => console.log(err)
+      );
+    }
   }
 
   // checkInArray(arr, id) {

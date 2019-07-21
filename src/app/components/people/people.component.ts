@@ -4,7 +4,6 @@ import _ from 'lodash';
 import io from 'socket.io-client';
 import { TokenService } from 'src/app/services/token.service';
 import { Router } from '@angular/router';
-import { ClassField } from '@angular/compiler';
 
 @Component({
   selector: 'app-people',

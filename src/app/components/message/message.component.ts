@@ -73,7 +73,7 @@ export class MessageComponent implements OnInit, AfterViewInit, OnChanges {
     const title = document.querySelector('.nameCol');
     if (changes.usersOnline.currentValue.length > 0) {
       const result = _.indexOf(changes.usersOnline.currentValue, this.receiver);
-      console.log(changes.usersOnline.currentValue);
+      // console.log(changes.usersOnline.currentValue);
       if (result > -1) {
         this.isOnline = true;
         (title as HTMLElement).style.marginTop = '10px';
@@ -96,7 +96,7 @@ export class MessageComponent implements OnInit, AfterViewInit, OnChanges {
     this.userSer.getByUsername(name).subscribe(data => {
       this.receiverData = data.user;
       this.getMessages(this.user._id, data.user._id);
-      console.log(this.receiverData);
+      // console.log(this.receiverData);
     });
   }
   getMessages(senderId, receiverId) {

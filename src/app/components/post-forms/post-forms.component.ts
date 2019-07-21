@@ -42,8 +42,10 @@ export class PostFormsComponent implements OnInit {
     }
     this.postSer.addPost(body).subscribe(
       data => {
-        console.log(data);
+        // console.log(data);
         this.socket.emit('refresh', {});
+        const filepath = <HTMLInputElement>document.getElementById('file-path');
+        filepath.value = '';
         this.postForm.reset(); },
       err => console.log(err)
     );

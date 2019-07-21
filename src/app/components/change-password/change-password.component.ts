@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-change-password',
@@ -9,17 +10,35 @@ import { UsersService } from 'src/app/services/users.service';
 })
 export class ChangePasswordComponent implements OnInit {
 
-  constructor( private fb: FormBuilder, private userSer: UsersService) { }
-
+  errorMessage: string;
+  isError =  false;
+  isDone =  false;
   passwordForm: FormGroup;
+  passwordChanged: string;
+
+  constructor( private fb: FormBuilder, private userSer: UsersService, private router: Router) { }
+
   changePassword() {
     // console.log(this.passwordForm.value);
     this.userSer.changePassword(this.passwordForm.value).subscribe(
       data => {
         console.log(data);
-        // this.passwordForm.reset();
+        this.isError =  false;
+        this.isDone =  true;
+        this.passwordForm.reset();
+        this.passwordChanged = data.message;
+        setTimeout(() => {
+          this.router.navigate(['streams']);
+        }, 2000);
       },
-      err => console.log(err)
+      err => {
+        console.log(err);
+        if (err.error.message) {
+          this.errorMessage = err.error.message;
+          this.isError =  true;
+          this.isDone =  false;
+        }
+      }
     );
   }
 
@@ -38,9 +57,9 @@ export class ChangePasswordComponent implements OnInit {
     const confirm_Password = passwordFormGroup.controls.confirmPassword.value;
     // console.log(new_Password, confirm_Password);
 
-    if (confirm_Password.length <= 0 ) {
-      return null;
-    }
+    // if (confirm_Password.length <= 0 ) {
+    //   return null;
+    // }
     if (confirm_Password !== new_Password ) {
       return {
         doesNotMatch: true

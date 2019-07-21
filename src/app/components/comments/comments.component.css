@@ -25,4 +25,14 @@ form {
 .postComment {
   font-size: 15px;
 }
-
+.postImage {
+  width: 100%;
+  margin: 0 auto !important;
+  left: 20px !important;
+  top: 10px !important;
+  height: 160px;
+}
+.card-image {
+  width: 200px;
+  height: 200px;
+}

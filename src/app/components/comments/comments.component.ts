@@ -35,7 +35,7 @@ export class CommentsComponent implements OnInit, AfterViewInit {
 
   addComment() {
     this.postSer.addComment(this.postId, this.commentForm.value.comment).subscribe(
-      data => { console.log(data); this.commentForm.reset();
+      data => {  this.commentForm.reset();
          this.socket.emit('refresh', {}); },
       err => console.log(err)
     );
@@ -49,9 +49,11 @@ export class CommentsComponent implements OnInit, AfterViewInit {
   getPost() {
     this.postSer.getPost(this.postId).subscribe(
       data => {
-        console.log(data);
-        this.post = data.post.post;
+        // console.log(data);
+        this.post = data.post;
+        // console.log(this.post);
         this.commentsArray = data.post.comments.reverse();
+        // console.log(this.commentsArray);
       },
       err => {
         console.log(err);

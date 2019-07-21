@@ -2,17 +2,16 @@
   <li class="collection-item avatar">
     <img src="http://res.cloudinary.com/hassanharga/image/upload/v{{post.user.picVersion}}/{{post.user.picId}}" alt="" class="circle">
     <span class="title">{{post.username}}</span>
-    <p class="time">{{timeFromNow(post.created)}} <br>
-       <!-- country -->
-    </p>
+    <p class="time">{{timeFromNow(post.created)}}</p>
+    <p *ngIf="post.user.country && post.user.city">{{post.user.city}}, {{post.user.country}}</p>
   </li>
   <div class="col s12">
     <div class="card">
-      <div class="card-image" *ngIf="post.imgVersion && post.imgId">
-        <img class="postImage" src="http://res.cloudinary.com/hassanharga/image/upload/v{{post.imgVersion}}/{{post.imgId}}"/>
-      </div>
       <div class="card-content">
         <p>{{post.post}}</p>
+      </div>
+      <div class="card-image" *ngIf="post.imgVersion && post.imgId">
+        <img class="postImage" src="http://res.cloudinary.com/hassanharga/image/upload/v{{post.imgVersion}}/{{post.imgId}}"/>
       </div>
       <div class="card-action">
         <i (click)='likePost(post)' [ngClass]="(!checkInLikesArray(post.likes, user.username)) ? 'notLiked' : 'liked' " class="material-icons">thumb_up</i>

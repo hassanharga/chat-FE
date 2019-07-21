@@ -65,7 +65,7 @@ export class ImagesComponent implements OnInit {
       this.userSer.upoadImage(this.selectedFile).subscribe(
         data => {
           this.socket.emit('refresh', {});
-          console.log(data);
+          // console.log(data);
           const filepath = <HTMLInputElement>document.getElementById('file-path');
           filepath.value = '';
         },
@@ -77,7 +77,7 @@ export class ImagesComponent implements OnInit {
 
   setProfileImage(image) {
     this.userSer.setdefaultImage(image.imgVersion, image.imgId).subscribe(
-      data => { console.log(data); this.socket.emit('refresh', {}); },
+      data => { this.socket.emit('refresh', {}); },
       err => console.log(err)
     );
     // console.log(imgVersion, imgId);

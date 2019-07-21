@@ -32,6 +32,9 @@ li {
 .collection-item {
   border: none !important;
 }
+/* .collection-item span p a {
+  color: #64b5f6;
+} */
 .isRead {
   color: #64b5f6;
   margin: 0px !important;
@@ -60,6 +63,10 @@ li {
 }
 .secondary-content{
   margin-top: -5px !important;
+  color: #64b5f6 !important;
+}
+.dropdown-content li>span {
+  color: #64b5f6 !important;
 }
 .markAll {
   color: #fff;
@@ -73,7 +80,7 @@ li {
 .dropdown-content{
   width: 300px !important;
   top: 50px !important;
-
+  color: #64b5f6 !important;
 }
 .msg {
   margin-left: 15px !important;

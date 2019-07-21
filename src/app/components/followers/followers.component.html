@@ -9,7 +9,7 @@
         <div class="row" *ngIf="followers.length > 0">
           <div class="col s12 m6 l4 cardDiv" *ngFor="let user of followers" >
             <div class="card">
-              <a>
+              <a (click)="viewUser(user)">
                 <div class="card-image imgDiv">
                   <img src="http://res.cloudinary.com/hassanharga/image/upload/v{{user.follower.picVersion}}/{{user.follower.picId}}" class="imgCircle responsive-img">
                 </div>
