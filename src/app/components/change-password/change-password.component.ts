@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
 import { Router } from '@angular/router';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-change-password',
@@ -16,7 +17,7 @@ export class ChangePasswordComponent implements OnInit {
   passwordForm: FormGroup;
   passwordChanged: string;
 
-  constructor( private fb: FormBuilder, private userSer: UsersService, private router: Router) { }
+  constructor( private fb: FormBuilder, private userSer: UsersService, private router: Router, private tokenSer: TokenService) { }
 
   changePassword() {
     // console.log(this.passwordForm.value);
@@ -25,6 +26,7 @@ export class ChangePasswordComponent implements OnInit {
         console.log(data);
         this.isError =  false;
         this.isDone =  true;
+        this.tokenSer.setToken(data.token);
         this.passwordForm.reset();
         this.passwordChanged = data.message;
         setTimeout(() => {
@@ -43,6 +45,7 @@ export class ChangePasswordComponent implements OnInit {
   }
 
   ngOnInit() {
+    // console.log(this.tokenSer.getPayload());
     this.passwordForm = this.fb.group({
       cpassword: ['', Validators.required],
       newPassword: ['', Validators.required],
