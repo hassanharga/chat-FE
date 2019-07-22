@@ -42,7 +42,7 @@
                 <div class="card-image" *ngIf="post.postId.imgVersion && post.postId.imgId">
                   <img class="postImage" src="http://res.cloudinary.com/hassanharga/image/upload/v{{post.postId.imgVersion}}/{{post.postId.imgId}}"/>
                 </div>
-                <div class="card-action">
+                <div class="card-action post-action">
                     <i (click)='likePost(post.postId)' [ngClass]="(!checkInLikesArray(post.postId.likes, user.username)) ? 'notLiked' : 'liked' " class="material-icons">thumb_up</i>
                     <span class="iconSpan">{{post.postId.totalLikes}}</span>
                     <i (click)='openCommentBox(post.postId)' [ngClass]="(!checkInLikesArray(post.postId.comments, user.username)) ? 'notLiked' : 'liked' " class="material-icons">chat</i>

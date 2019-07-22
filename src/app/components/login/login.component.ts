@@ -12,6 +12,7 @@ import { TokenService } from 'src/app/services/token.service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   errorMessage: string;
+  isError = false;
   showspinner = false;
   constructor(private fb: FormBuilder, private authSer: AuthService, private router: Router, private tokenSer: TokenService) { }
   loginUser() {
@@ -19,6 +20,7 @@ export class LoginComponent implements OnInit {
     this.authSer.loginUser(this.loginForm.value).subscribe(
       data => {
         this.showspinner = true;
+        this.isError = false;
         // console.log(data);
         this.tokenSer.setToken(data.token);
         // localStorage.setItem('token',data.token);
@@ -28,6 +30,7 @@ export class LoginComponent implements OnInit {
         }, 2000);
       },
       err => {
+        this.isError = true;
         this.showspinner = false;
         console.log(err);
         if (err.error.message) {
