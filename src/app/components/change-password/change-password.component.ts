@@ -23,7 +23,7 @@ export class ChangePasswordComponent implements OnInit {
     // console.log(this.passwordForm.value);
     this.userSer.changePassword(this.passwordForm.value).subscribe(
       data => {
-        console.log(data);
+        // console.log(data);
         this.isError =  false;
         this.isDone =  true;
         this.tokenSer.setToken(data.token);
