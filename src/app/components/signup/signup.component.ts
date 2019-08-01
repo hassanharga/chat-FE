@@ -15,11 +15,11 @@ export class SignupComponent implements OnInit {
   showspinner = false;
   constructor(private authSerice: AuthService, private fb: FormBuilder, private router: Router, private tokenSer: TokenService) { }
   signupUser() {   // create user
-    console.log(this.signupForm.value);
+    // console.log(this.signupForm.value);
     this.authSerice.createUser(this.signupForm.value).subscribe(
       data => {
         this.showspinner = true;
-        console.log(data);
+        // console.log(data);
         this.tokenSer.setToken(data.token);
         // localStorage.setItem('token',data.token);
         // this.signupForm.reset();

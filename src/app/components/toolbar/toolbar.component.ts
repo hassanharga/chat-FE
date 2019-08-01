@@ -61,11 +61,13 @@ export class ToolbarComponent implements OnInit, AfterViewInit {
   getUser() {
     this.userSer.getByUserId(this.user._id).subscribe(
       data => {
-        this.notifications = data.user.notifications.reverse();
+        if (data.user.notifications) {
+          this.notifications = data.user.notifications.reverse();
+          const value = _.filter(this.notifications, ['read', false]);
+          this.count = value;
+        }
         this.imageVersion = data.user.picVersion;
         this.imageId = data.user.picId;
-        const value = _.filter(this.notifications, ['read', false]);
-        this.count = value;
         this.chatList = data.user.chatList;
         this.checkIfRead(this.chatList);
         // console.log(this.chatList);

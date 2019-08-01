@@ -45,17 +45,19 @@
   -webkit-transform: rotateX(118deg) skew(-5deg);
   transform: rotateX(118deg) skew(-5deg);
 }
-.nameCol{
+ /* .nameCol{
   margin-left: 20px !important;
   padding: 0px !important;
   height: auto !important;
   width: auto !important;
-}
-.nameCol span {
+  position: absolute;
+  top: 5px;
+} */
+.nameCol{
   font-size: 20px;
   color: white;
-  margin-top: -5px !important;
-  padding: 0px !important;
+  /* margin-top: -5px !important; */
+  /* padding: 0px !important; */
 }
 .emojiDiv {
   width: 40px !important;
@@ -107,4 +109,7 @@
 }
 /* .message {
   display: block;
+} */
+/* .messange-wrspper {
+  margin-top: 20px;
 } */

@@ -76,10 +76,10 @@ export class MessageComponent implements OnInit, AfterViewInit, OnChanges {
       // console.log(changes.usersOnline.currentValue);
       if (result > -1) {
         this.isOnline = true;
-        (title as HTMLElement).style.marginTop = '10px';
+        // (title as HTMLElement).style.marginTop = '10px';
       } else {
         this.isOnline = false;
-        (title as HTMLElement).style.marginTop = '20px';
+        // (title as HTMLElement).style.marginTop = '20px';
       }
     }
   }
