@@ -6,7 +6,10 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UsersService {
-  url = 'http://localhost:8080/api/chatapp';
+
+  // url = 'http://localhost:8080/api/chatapp';
+  url = 'https://chat-bee.herokuapp.com/api/chatapp';
+
 
   constructor(private http: HttpClient) { }
   getAllUsers(): Observable<any> {

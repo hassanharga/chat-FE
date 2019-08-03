@@ -17,7 +17,9 @@ export class PostsComponent implements OnInit {
   posts = [];
 
   constructor(private postSer: PostService, private tokser: TokenService, private router: Router) {
-    this.socket = io('http://localhost:8080');
+    // this.socket = io('http://localhost:8080');
+    this.socket = io('https://chat-bee.herokuapp.com');
+
 
   }
 

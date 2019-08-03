@@ -16,7 +16,9 @@ export class TopStreamsComponent implements OnInit {
   user: any;
   topPosts = [];
   constructor(private postSer: PostService, private tokser: TokenService, private router: Router) {
-    this.socket = io('http://localhost:8080'); }
+    // this.socket = io('http://localhost:8080');
+    this.socket = io('https://chat-bee.herokuapp.com');
+  }
 
 
   ngOnInit() {

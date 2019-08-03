@@ -25,7 +25,9 @@ export class ToolbarComponent implements OnInit, AfterViewInit {
   imageVersion: any;
 
   constructor(private tokenSer: TokenService, private router: Router, private userSer: UsersService, private msgSer: MessageService) {
-    this.socket = io('http://localhost:8080');
+    // this.socket = io('http://localhost:8080');
+    this.socket = io('https://chat-bee.herokuapp.com');
+
   }
 
   ngOnInit() {

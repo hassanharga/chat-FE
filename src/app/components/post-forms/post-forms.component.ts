@@ -12,7 +12,7 @@ import { FileUploader } from 'ng2-file-upload';
 export class PostFormsComponent implements OnInit {
   socket: any;
   postForm: FormGroup;
-  url = 'http://localhost:8080/api/chatapp/upload-image';
+  url = 'https://chat-bee.herokuapp.com/api/chatapp/upload-image';
   uploader: FileUploader = new FileUploader({
     url: this.url,
     disableMultipart: true
@@ -20,7 +20,9 @@ export class PostFormsComponent implements OnInit {
   selectedFile: any;
 
   constructor(private fb: FormBuilder, private postSer: PostService) {
-    this.socket = io('http://localhost:8080');
+    // this.socket = io('http://localhost:8080');
+    this.socket = io('https://chat-bee.herokuapp.com');
+
    }
 
   ngOnInit() {

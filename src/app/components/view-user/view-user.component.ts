@@ -30,7 +30,9 @@ export class ViewUserComponent implements OnInit, AfterViewInit {
 
 // tslint:disable-next-line: max-line-length
   constructor(private postSer: PostService, private router: Router, private route: ActivatedRoute, private userSer: UsersService, private tokser: TokenService) {
-    this.socket = io('http://localhost:8080');
+    // this.socket = io('http://localhost:8080');
+    this.socket = io('https://chat-bee.herokuapp.com');
+
   }
 
 

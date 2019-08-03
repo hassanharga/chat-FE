@@ -7,7 +7,9 @@ import { Observable } from 'rxjs';
 })
 export class PostService {
 
-  url = 'http://localhost:8080/api/chatapp';
+  // url = 'http://localhost:8080/api/chatapp';
+  url = 'https://chat-bee.herokuapp.com/api/chatapp';
+
   constructor(private http: HttpClient) { }
   addPost(body): Observable<any> {
     return this.http.post(`${this.url}/post/add-post`, body);

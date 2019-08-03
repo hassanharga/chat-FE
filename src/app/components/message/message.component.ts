@@ -40,7 +40,8 @@ export class MessageComponent implements OnInit, AfterViewInit, OnChanges {
     private route: ActivatedRoute,
     private userSer: UsersService
   ) {
-    this.socket = io('http://localhost:8080');
+    this.socket = io('https://chat-bee.herokuapp.com');
+    // this.socket = io('http://localhost:8080');
 
    }
 

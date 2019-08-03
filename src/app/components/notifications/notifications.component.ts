@@ -15,7 +15,9 @@ export class NotificationsComponent implements OnInit {
   socket: any;
   notifications = [];
   constructor(private tokSer: TokenService, private userSer: UsersService) {
-    this.socket = io('http://localhost:8080');
+    // this.socket = io('http://localhost:8080');
+    this.socket = io('https://chat-bee.herokuapp.com');
+
 
    }
 

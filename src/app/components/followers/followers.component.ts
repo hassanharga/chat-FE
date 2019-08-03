@@ -18,7 +18,8 @@ export class FollowersComponent implements OnInit {
   socket: any;
 
   constructor(private tokSer: TokenService, private userSer: UsersService, private router: Router) {
-    this.socket = io('http://localhost:8080');
+    this.socket = io('https://chat-bee.herokuapp.com');
+    // this.socket = io('http://localhost:8080');
    }
 
   ngOnInit() {

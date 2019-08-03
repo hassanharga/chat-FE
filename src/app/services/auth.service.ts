@@ -6,7 +6,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  url = 'http://localhost:8080/api/chatapp';
+  // url = 'http://localhost:8080/api/chatapp';
+  url = 'https://chat-bee.herokuapp.com/api/chatapp';
+
   constructor(private http: HttpClient) { }
   createUser(body): Observable<any> {
     return this.http.post<any>(`${this.url}/register`, body);

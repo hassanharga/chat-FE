@@ -14,7 +14,8 @@ export class ImagesComponent implements OnInit {
   socket: any;
   user: any;
   images = [];
-  url = 'http://localhost:8080/api/chatapp/upload-image';
+  url = 'https://chat-bee.herokuapp.com/api/chatapp/upload-image';
+  // url = 'http://localhost:8080/api/chatapp/upload-image';
   uploader: FileUploader = new FileUploader({
     url: this.url,
     disableMultipart: true

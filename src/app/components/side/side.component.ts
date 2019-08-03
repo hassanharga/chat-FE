@@ -14,7 +14,9 @@ export class SideComponent implements OnInit {
   user: any;
   userData: any;
   constructor(private userSer: UsersService, private tokser: TokenService) {
-    this.socket = io('http://localhost:8080');
+    // this.socket = io('http://localhost:8080');
+    this.socket = io('https://chat-bee.herokuapp.com');
+
   }
 
   getUser() {

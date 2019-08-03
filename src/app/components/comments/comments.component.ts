@@ -18,7 +18,8 @@ export class CommentsComponent implements OnInit, AfterViewInit {
   post: any;
   commentsArray = [];
   constructor(private fb: FormBuilder, private postSer: PostService, private router: ActivatedRoute) {
-    this.socket = io('http://localhost:8080');
+    this.socket = io('https://chat-bee.herokuapp.com');
+    // this.socket = io('http://localhost:8080');
    }
 
   ngOnInit() {

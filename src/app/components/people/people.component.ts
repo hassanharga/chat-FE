@@ -20,7 +20,9 @@ export class PeopleComponent implements OnInit {
   // isOnline = false;
 
   constructor(private userSer: UsersService, private tokSer: TokenService, private router: Router) {
-    this.socket = io('http://localhost:8080');
+    // this.socket = io('http://localhost:8080');
+    this.socket = io('https://chat-bee.herokuapp.com');
+
   }
 
   ngOnInit() {
