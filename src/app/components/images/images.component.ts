@@ -23,7 +23,8 @@ export class ImagesComponent implements OnInit {
   selectedFile: any;
 
   constructor( private userSer: UsersService, private tokenSer: TokenService) {
-    this.socket = io('http://localhost:8080');
+    // this.socket = io('http://localhost:8080');
+    this.socket = io('https://chat-bee.herokuapp.com');
 
   }
 
