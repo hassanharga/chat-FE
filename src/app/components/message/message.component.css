@@ -19,12 +19,12 @@
   bottom: 7.5px;
 }
 .chat-bubble.left{
-  background: #f1f1f0;
+  background: silver;
   float: left;
   margin-left: 7px
 }
 .chat-bubble.left:before{
-  background: #f1f1f0;
+  background: silver;
   left: 10px;
   z-index: -1;
   border-radius: 10px;
